@@ -85,7 +85,7 @@ class Presenter extends Base {
         height: "100%",
         width: "100%",
         display: "flex",
-        flex: 1,
+        flex: 2,
         flexDirection: "column"
       },
       header: {
@@ -93,7 +93,7 @@ class Presenter extends Base {
         display: "block",
         color: "white",
         width: "100%",
-        height: "20%",
+        height: "5%",
         textAlign: "center",
         padding: "20px 50px"
       },
@@ -128,27 +128,29 @@ class Presenter extends Base {
       main: {
         display: "inline-block",
         width: "50%",
-        height: "60%",
+        height: "30%",
         border: "2px solid white",
         padding: 20,
         margin: 20,
-        position: "relative"
+        position: "relative",
+        top: "-20%"
       },
       next: {
         display: "inline-block",
         width: "40%",
-        height: "50%",
+        height: "20%",
         border: "2px solid white",
         padding: 20,
         margin: 20,
-        position: "relative"
+        position: "relative",
+        top: "-20%"
       },
       notes: {
         position: "absolute",
         display: "block",
         color: "white",
         width: "100%",
-        height: "20%",
+        height: "50%",
         bottom: "0px",
         textAlign: "left",
         padding: "20px 50px",

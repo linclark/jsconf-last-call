@@ -98,6 +98,7 @@ const Slide = React.createClass({
         display: "flex",
         position: "relative",
         flex: 1,
+        width: "50%",
         alignItems: this.props.align ? this.props.align.split(" ")[1] : "center",
         justifyContent: this.props.align ? this.props.align.split(" ")[0] : "center"
       },

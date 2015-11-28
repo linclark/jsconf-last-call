@@ -1,13 +1,13 @@
 /*eslint-disable object-shorthand*/
 const colors = {
-  primary: "#f9c300",
-  secondary: "black",
-  tertiary: "white"
+  primary: "#fff",
+  secondary: "#006dc6",
+  tertiary: "#006dc6"
 };
 
 const fonts = {
-  primary: "Open Sans Condensed",
-  secondary: "Lobster Two",
+  primary: "codecartoons",
+  secondary: "codecartoons",
   tertiary: "monospace"
 };
 
@@ -207,7 +207,7 @@ module.exports = {
     },
     image: {
       display: "block",
-      margin: "0.5rem auto"
+      margin: "0 auto"
     },
     link: {
       textDecoration: "none"

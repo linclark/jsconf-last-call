@@ -337,14 +337,6 @@ class Deck extends Component {
       >
         {componentToRender}
 
-        {
-          !this.context.export ?
-          <Progress
-            items={this.props.children}
-            currentSlide={this._getSlideIndex()}
-            type={this.props.progress}
-          /> : ""
-        }
         <Style rules={Object.assign(this.context.styles.global, globals)} />
       </div>
     );

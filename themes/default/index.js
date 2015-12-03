@@ -160,7 +160,7 @@ module.exports = {
         fontSize: "7.05rem",
         fontFamily: fonts.primary,
         lineHeight: 1,
-        fontWeight: "bold",
+        fontWeight: "normal",
         margin: 0,
         zoom: 1
       },
@@ -169,7 +169,7 @@ module.exports = {
         fontSize: "5.88rem",
         fontFamily: fonts.primary,
         lineHeight: 1,
-        fontWeight: "bold",
+        fontWeight: "normal",
         margin: 0
       },
       h3: {
@@ -177,7 +177,7 @@ module.exports = {
         fontSize: "4.9rem",
         fontFamily: fonts.secondary,
         lineHeight: 1,
-        fontWeight: "bold",
+        fontWeight: "normal",
         margin: "0.5rem auto"
       },
       h4: {
@@ -185,7 +185,7 @@ module.exports = {
         fontSize: "3.82rem",
         fontFamily: fonts.primary,
         lineHeight: 1,
-        fontWeight: "bold",
+        fontWeight: "normal",
         margin: "0.5rem auto"
       },
       h5: {
@@ -193,7 +193,7 @@ module.exports = {
         fontSize: "3.19rem",
         fontFamily: fonts.primary,
         lineHeight: 1,
-        fontWeight: "bold",
+        fontWeight: "normal",
         margin: "0.5rem auto"
       },
       h6: {
@@ -201,7 +201,7 @@ module.exports = {
         fontSize: "2.66rem",
         fontFamily: fonts.primary,
         lineHeight: 1,
-        fontWeight: "bold",
+        fontWeight: "normal",
         margin: "0.5rem auto"
       }
     },
@@ -210,6 +210,7 @@ module.exports = {
       margin: "0 auto"
     },
     link: {
+      color: "inherit",
       textDecoration: "none"
     },
     listItem: {

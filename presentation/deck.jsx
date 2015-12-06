@@ -17,6 +17,7 @@ function prepImage(name) {
 
 let mapImages = {};
 [
+  "me",
   "map",
   "mapNoRegions",
   "fluxMap",
@@ -72,10 +73,14 @@ let relayImages = {};
   "wheres_cloud",
   "cloudFlux",
   "cloudRedux",
-  "endpoint",
-  "underfetching",
-  "overfetching",
-  "fetching",
+  "endpoint1",
+  "endpoint2",
+  "endpoint3",
+  "fetching1",
+  "fetching2",
+  "fetching3",
+  "fetching4",
+  "fetching5",
   "whats_in_cloud",
   "graph_in_cloud",
   "graph_section_in_cloud",
@@ -89,13 +94,16 @@ let relayImages = {};
   "local_cache_6",
   "local_cache_7",
   "local_cache_8",
+  "local_cache_9",
   "local_cache_b1",
   "local_cache_b2",
   "local_cache_b3",
   "local_cache_c0",
   "local_cache_c1",
   "local_cache_c2",
-  "local_cache_c3"
+  "local_cache_c3",
+  "relayFlow",
+  "relayFlow1"
 ].forEach((name) => relayImages[name] = prepImage(name))
 
 let summaryImages = {};
@@ -118,15 +126,15 @@ export default class extends Component {
         <Slide transition={["fade"]} bgColor="primary">
           <Image src={mapImages.map} style={{maxHeight: "700px"}} />
         </Slide>
-        <Slide transition={["fade"]} notes="Hi, I'm Lin Clark<p>Today I'm going to walk you through the wilds of data handling in react...</p>">
-          <Heading>
+        <Slide transition={["fade"]} notes="Hi, I'm Lin Clark<p>Walk you through the wilds</p>" bgImage={mapImages.me}>
+          <Heading size="2" padding="0 320px 0 0">
             Hi, I'm <Link href="https://twitter.com/linclark">@linclark</Link> and I make <Link href="https://twitter.com/codecartoons">@codecartoons</Link>.
           </Heading>
         </Slide>
         <Slide transition={["fade"]} bgColor="primary" notes="I call it the wilds because when you first look at the landscape, it seems to be overflowing with an untamed profusion of different options. It's hard to figure out why you might want to use anyone in particular.">
           <Image src={mapImages.mapNoRegions} style={{maxHeight: "700px"}} />
         </Slide>
-        <Slide transition={["fade"]} bgColor="primary" notes="When you look closer, you'll see that there are three main ways of doing data and react – flux, Redux, and relay. And they are actually easier to understand than you might think. So let's take a quick whirlwind tour through them.<br /><br />The first of these was Flux. I want to start with the kernel of an idea that was the core of Flux and has carried on in part to both Redux and Relay. ">
+        <Slide transition={["fade"]} bgColor="primary" notes="When you look closer, you'll see that there are three main ways of doing data in react – Flux, Redux, and Relay. And they are actually easier to understand than you might think. So let's take a quick whirlwind tour through them.<br /><br />The first of these was Flux. I want to start with the kernel of an idea that was the core of Flux and has carried on in part to both Redux and Relay. ">
           <Image src={mapImages.map} style={{maxHeight: "700px"}} />
         </Slide>
         <Slide transition={["fade"]} notes="And this is it. Don't worry if you don't understand it... this whole project started because I couldn't make sense of this diagram.<br /><br />Once you understand Flux, this diagram is very clear. But when you're fresh and completely new to Flux, it just looks like any other box and arrow diagram. So let me start with the problem that flux is trying to solve, and then we'll come back to this diagram. <br /><br />Flux and React both come out of Facebook. They were developed side by side to address a particular set of problems that Facebook was seeing.">
@@ -139,7 +147,7 @@ export default class extends Component {
           <Image src={fluxImages.message_notification_off} />
         </Slide>
         <Slide transition={["fade"]} notes="you'd keep going around in this cycle. But it wasn't just a cycle for you, the user. It was also a cycle for the team at Facebook.">
-          <Image src={fluxImages.message_cycle} />
+          <Image src={fluxImages.message_cycle} width="1000px" />
         </Slide>
         <Slide transition={["fade"]} notes="They'd fix it, and then it would come back again. So they wanted to fix it once and for all and end the cycle.<br /><br />When they looked at it, they realized that the source of the problems... the thing that was making it so unpredictable, was the way they were handling data.">
           <Image src={fluxImages.facebook_cycle} />
@@ -267,17 +275,17 @@ export default class extends Component {
         <Slide transition={["fade"]} notes="And that's Redux...">
           <Image src={mapImages.fluxMap} height="700px" />
         </Slide>
-        <Slide transition={["fade"]} notes="If you've been following along closely until now, you might have a question.">
+        <Slide transition={["fade"]} notes="Now we move on to Relay. If you've been following along closely until now, you might have a question.">
           <Image src={mapImages.fluxReduxMap} height="700px" />
         </Slide>
         <Slide transition={["fade"]} notes="Where's the cloud?">
           <Image src={relayImages.wheres_cloud} height="700px" />
         </Slide>
         <Slide transition={["fade"]} notes="Flux doesn't have one set place to put interaction wtih the server. Even at Facebook, different teams did it in different parts of the app.">
-          <Image src={relayImages.cloudFlux} />
+          <Image src={relayImages.cloudFlux} width="1000px" />
         </Slide>
-        <Slide transition={["fade"]} notes="Redux does have a recommended place to put it, but it still requires extra code to make it work seamlessly.">
-          <Image src={relayImages.cloudRedux} />
+        <Slide transition={["fade"]} notes="Redux does have a recommended place to put it, but it still requires extra code to make it work seamlessly. To do things like caching and handling network errors.<br /><br />Relay does this stuff, and it does it all for you without you having to write additional code. So let's look at how Relay hooks you up to the cloud, but first we should ask...">
+          <Image src={relayImages.cloudRedux} width="1000px" />
         </Slide>
         <Slide transition={["fade"]} notes="What's in the cloud?">
           <Image src={relayImages.whats_in_cloud} height="700px" />
@@ -295,16 +303,28 @@ export default class extends Component {
           <Image src={relayImages.local_cache_with_components} height="700px" />
         </Slide>
         <Slide transition={["fade"]} notes="The way most people design web apps, you'd have an endpoint that knows what data to give you.<br /><br />This results in coupling between the client and the server. You have to update code on both whenever you want to change what the client shows.">
-          <Image src={relayImages.endpoint} height="700px" />
+          <Image src={relayImages.endpoint1} height="700px" />
         </Slide>
-        <Slide transition={["fade"]} notes="If you add a property to the component and don't change the server, then you'll have a bug because the data isn't there when the component loads. This is called underfetching.">
-          <Image src={relayImages.underfetching} height="700px" />
+        <Slide transition={["fade"]} notes="">
+          <Image src={relayImages.endpoint2} height="700px" />
         </Slide>
-        <Slide transition={["fade"]} notes="If you remove a property from a component (or remove the component) then you'll but don't remove it from the server, then you'll have overfetching... where you're pulling down too many properties. This results in cruft.">
-          <Image src={relayImages.overfetching} height="700px" />
+        <Slide transition={["fade"]} notes="">
+          <Image src={relayImages.endpoint3} height="700px" />
         </Slide>
         <Slide transition={["fade"]} notes="Relay fixes this by having the component say exactly what bit of the graph it cares about.">
-          <Image src={relayImages.fetching} height="700px" />
+          <Image src={relayImages.fetching1} height="700px" />
+        </Slide>
+        <Slide transition={["fade"]} notes="">
+          <Image src={relayImages.fetching2} height="700px" />
+        </Slide>
+        <Slide transition={["fade"]} notes="">
+          <Image src={relayImages.fetching3} height="700px" />
+        </Slide>
+        <Slide transition={["fade"]} notes="">
+          <Image src={relayImages.fetching4} height="700px" />
+        </Slide>
+        <Slide transition={["fade"]} notes="">
+          <Image src={relayImages.fetching5} height="700px" />
         </Slide>
         <Slide transition={["fade"]} notes="When you have this, it enables really cool things. Having your component say exactly what data it corresponds to in the graph makes it possible to automatically do things like....">
           <Image src={relayImages.local_cache_1} width="1000px" />
@@ -330,6 +350,9 @@ export default class extends Component {
         <Slide transition={["fade"]} notes="....<br /><br />It also makes it possible to reduce the size of queries.">
           <Image src={relayImages.local_cache_8} width="1000px" />
         </Slide>
+        <Slide transition={["fade"]} notes="....<br /><br />It also makes it possible to reduce the size of queries.">
+          <Image src={relayImages.local_cache_9} width="1000px" />
+        </Slide>
         <Slide transition={["fade"]} notes="For example, if you already have the data downloaded and in the cache...">
           <Image src={relayImages.local_cache_b1} width="1000px" />
         </Slide>
@@ -352,13 +375,10 @@ export default class extends Component {
           <Image src={relayImages.local_cache_c3} width="1000px" />
         </Slide>
         <Slide transition={["fade"]} notes="I don't have enough time to talk about how Relay does this. As you see, there are a ton of characters involved here. But I want to point out the thread that ties it to the other two.">
-          <Image src={relayImages.wheres_cloud} />
+          <Image src={relayImages.relayFlow} style={{maxHeight: "700px"}} />
         </Slide>
         <Slide transition={["fade"]} notes="First, all state updates are handled by creating an object declares what should happen. This time, that object is called a mutation.">
-          <Image src={relayImages.wheres_cloud} />
-        </Slide>
-        <Slide transition={["fade"]} notes="The view gets notified when state is ready and pulls data down. The thing that does this is kind of like Redux's view layer binding. It automates a lot of the work for you. Unlike Flux and Redux, this sets up an observer. But Relay manages this for you, so you don't have to manage the complexity.">
-          <Image src={relayImages.wheres_cloud} />
+          <Image src={relayImages.relayFlow1} style={{maxHeight: "700px"}} />
         </Slide>
         <Slide transition={["fade"]} bgColor="primary" notes="So that's Relay">
           <Image src={mapImages.fluxReduxMap} style={{maxHeight: "700px"}} />
@@ -393,9 +413,14 @@ export default class extends Component {
         <Slide transition={["fade"]} notes="">
           <Image src={summaryImages.summary9} style={{maxHeight: "700px"}} />
         </Slide>
-        <Slide transition={["fade"]} notes="">
-          <Heading>Thanks!</Heading>
-          <Text>@codecartoons</Text>
+        <Slide transition={["fade"]} notes="" bgImage={mapImages.me}>
+          <Heading size="2" padding="0 320px 0 0">
+            Thanks!
+          </Heading>
+          <Heading size="3" padding="0 320px 0 0">
+                      <Link href="https://code-cartoons.com">code-cartoons.com</Link><br />
+            <Link href="https://twitter.com/codecartoons">@codecartoons</Link><br />
+          </Heading>
         </Slide>
       </Deck>
     );

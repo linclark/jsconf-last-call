@@ -131,13 +131,13 @@ export default class extends Component {
             Hi, I'm <Link href="https://twitter.com/linclark">@linclark</Link> and I make <Link href="https://twitter.com/codecartoons">@codecartoons</Link>.
           </Heading>
         </Slide>
-        <Slide transition={["fade"]} bgColor="primary" notes="I call it the wilds because when you first look at the landscape, it seems to be overflowing with an untamed profusion of different options. It's hard to figure out why you might want to use anyone in particular.">
+        <Slide transition={["fade"]} bgColor="primary" notes="<ul><li>call it the wilds... untamed profusion<br /><br /></li><li>hard to figure out why you'd want to use</li></ul>">
           <Image src={mapImages.mapNoRegions} style={{maxHeight: "700px"}} />
         </Slide>
-        <Slide transition={["fade"]} bgColor="primary" notes="When you look closer, you'll see that there are three main ways of doing data in react – Flux, Redux, and Relay. And they are actually easier to understand than you might think. So let's take a quick whirlwind tour through them.<br /><br />The first of these was Flux. I want to start with the kernel of an idea that was the core of Flux and has carried on in part to both Redux and Relay. ">
+        <Slide transition={["fade"]} bgColor="primary" notes="<ul><li>look closer, 3 main groupings</li><li>easier to understand than might think</li><li>whirlwind tour<br /><br /></li><li>First was Flux</li><li>kernel of an idea in Flux</li><li>carries through</li></ul>">
           <Image src={mapImages.map} style={{maxHeight: "700px"}} />
         </Slide>
-        <Slide transition={["fade"]} notes="And this is it. Don't worry if you don't understand it... this whole project started because I couldn't make sense of this diagram.<br /><br />Once you understand Flux, this diagram is very clear. But when you're fresh and completely new to Flux, it just looks like any other box and arrow diagram. So let me start with the problem that flux is trying to solve, and then we'll come back to this diagram. <br /><br />Flux and React both come out of Facebook. They were developed side by side to address a particular set of problems that Facebook was seeing.">
+        <Slide transition={["fade"]} notes="And this is it. Don't worry if you don't understand it... this whole project started because I couldn't make sense of this diagram.<ul><li>Once you understand Flux, this diagram is very clear.</li><li>Don't think it helps you wrap head</li><li>Before explaining this diagram, explain the problem<br /><br /></li></ul>Flux and React both come out of Facebook. They were developed side by side to address a particular set of problems that Facebook was seeing.">
           <Image src={fluxImages.diagram} />
         </Slide>
         <Slide transition={["fade"]} notes="Remember a few years ago when you'd go to Facebook and you'd see that you had a new message. Then you'd click on it.">
@@ -149,33 +149,32 @@ export default class extends Component {
         <Slide transition={["fade"]} notes="you'd keep going around in this cycle. But it wasn't just a cycle for you, the user. It was also a cycle for the team at Facebook.">
           <Image src={fluxImages.message_cycle} width="1000px" />
         </Slide>
-        <Slide transition={["fade"]} notes="They'd fix it, and then it would come back again. So they wanted to fix it once and for all and end the cycle.<br /><br />When they looked at it, they realized that the source of the problems... the thing that was making it so unpredictable, was the way they were handling data.">
+        <Slide transition={["fade"]} notes="They'd fix it, and then it would come back again.<ul><li>wanted to fix it once and for all and end the cycle.<br /><br /></li><li>source of problems was way they were handling data</li></ul>">
           <Image src={fluxImages.facebook_cycle} />
         </Slide>
-        <Slide transition={["fade"]} notes="They had models. Those models would pass data to the views, which would format it.<br /><br />The view also provided the user interface, so it would collect data.">
+        <Slide transition={["fade"]} notes="<ul><li>They had models</li><li>models would pass data to the views, which would format it<br /><br /></li><li>view provided user interface</li></ul>">
           <Image src={fluxImages.model_view1} />
         </Slide>
-        <Slide transition={["fade"]} notes="And the data needed to go back to the model. So you had views updating models.<br /><br />and sometimes a change in one model makes for a change in another...">
+        <Slide transition={["fade"]} notes="<ul><li>view data needed to go back to the model</li><li>views updating models<br /><br /></li><li>sometimes model affects other model</li></ul>">
           <Image src={fluxImages.model_view2} />
         </Slide>
-        <Slide transition={["fade"]} notes="so you have models updating models. All in all, this starts to look like an epic game of pong. It's hard to figure out where the ball is going to land.<br /><br />Throw in the fact that these updates could be triggered asynchronously, so a change could trigger 2 or more other changes happening concurrently. Which is kind of like taking a bag full of ping pong balls and throwing it into your pong game.<br /><br />Facebook wanted to make this more predictable. They wanted to make it easy to figure out what effects a user interaction would have. And Flux was the way they did that.">
+        <Slide transition={["fade"]} notes="<ul><li>models updating models</li><li>epic game of pong</li><li>where the ball is going to land.<br /><br /></li><li>Throw in the fact that these updates could be triggered asynchronously</li><li>trigger 2 or more other changes happening concurrently</li><li>bag full of ping pong balls</li><br /><br />Facebook wanted to make this more predictable. They wanted to make it easy to figure out what effects a user interaction would have. And Flux was the way they did that.</ul>">
           <Image src={fluxImages.model_view3} />
         </Slide>
-        <Slide transition={["fade"]} notes="So we're back to this diagram. This is the diagram you'll find if you read the Flux docs. What it's showing you is a unidirectional data flow... the data is only going in one direction. But if you don't already understand what the parts do, I don't think this diagram helps you really get it. It definitely didn't help me.<br /><br />What did help me understand Flux was thinking about it as a group of characters, working together as a team to complete some task. So I'm going to introduce you to the cast of characters in my head.">
+        <Slide transition={["fade"]} notes="<ul><li>back to this diagram</li><li>Flux docs</li><br /><br /><li>unidirectional data flow</li><li>if you don't already understand what the parts do, I don't think this diagram helps you really get it</li><li>It definitely didn't help me.</li><br /><br />What did help me understand Flux was thinking about it as a group of characters, working together as a team to complete some task. So I'm going to introduce you to the cast of characters in my head.">
           <Image src={fluxImages.diagram} />
         </Slide>
-        <Slide notes="I think of the action creator as a telegraph operator. The View comes to it when it wants to send a message out to the rest of the system. ><br/><br/>The action creator takes the information the view gives it and formats it in a way the rest of the system can understand. Each change that the view wants to make... the action creator turns into an object that represents that change. That object has a type... for example, MESSAGE_CREATE or MESSAGE_READ, and a payload which contains the data. You define a list of action types that your system knows how to handle. The neat thing about this is that that list provides an API of all possible state changes. > <br /><br />......Once it has formatted this, the action creator sends the action off to the dispatcher.">
+        <Slide notes="<ul><li>telegraph operator >>></li><li>other characters come</li> >>></li><br/><br/><li>takes info + formats it so rest of the system can understand</li><li>Each change that the view wants to make... the action creator turns into an object that represents that change.</li><li>object has a type (MESSAGE_CREATE)</li><li>payload</li><li>You define list</li><li>neat thing</li> >>> <br /><br />......Once it has formatted this, the action creator sends the action off to the dispatcher.">
           <CharacterCard image={fluxImages.action} title="The Action Creator">
             <ListItem>telegraph operator</ListItem>
             <ListItem>formats actions</ListItem>
             <ListItem>provides an API of all possible state changes</ListItem>
           </CharacterCard>
         </Slide>
-        <Slide notes="The dispatcher is like a switchboard operator. > <br /><br />It's basically a big registry of callbacks. It has a list of stores that it needs to notify of any action. One way that the Flux dispatcher is different is that it sends the action to every store. > <br /><br />In a lot of other systems, you can register for a single type of event, but in Flux the dispatcher just sends it to every one. It's the store's responsibility to figure out if it cares about actions of this type.">
+        <Slide notes="<ul><li>switchboard operator >>>></li><br /><br /><li>big registry of callbacks >>>></li><li>list of stores that it needs to notify of any action.<br /><br /></li><li>Flux dispatcher is different >>>> <br /><br /></li><li>other systems, register for type</li><li>Flux dispatcher sends it to every one</li><li>store's responsibility</li>">
           <CharacterCard image={fluxImages.dispatcher} title="The Dispatcher">
             <ListItem>switchboard operator</ListItem>
             <ListItem>registry of callbacks</ListItem>
-            <ListItem>moves actions from creator to stores</ListItem>
             <ListItem>action is dispatched to every registered callback</ListItem>
           </CharacterCard>
         </Slide>
@@ -221,10 +220,10 @@ export default class extends Component {
           <Image src={fluxImages.flux_flow_6} height="700px" />
         </Slide>
 
-        <Slide transition={["fade"]} notes="">
+        <Slide transition={["fade"]} notes="So that's Flux and it ended the cycle of brokenness and all rejoiced... and created 100 different implementations of it.">
           <Image src={mapImages.mapNoRegions} height="700px" />
         </Slide>
-        <Slide transition={["fade"]} notes="So that's Flux and it ended the cycle of brokenness and all rejoiced... and created 100 different implementations of it. <br /><br />Now, on to Redux. Redux is a lot like Flux with just a couple of changes....... but if Flux solved the problem, why change it? The guy who created it wanted to make it faster to develop. The changes he made to Flux help with more than just this use case, but I think this is a good one for illustrating them.<br /><br />He had seen two cool debugging techniques in other communities and wanted to bring them to React. These were hot reloading and time travel debugging. But what are they?">
+        <Slide transition={["fade"]} notes="........Now, on to Redux<ul><li>a lot like Flux</li><li>just a couple of changes<br /><br /></li></li>but if Flux solved the problem, why change it?</li><li>make it faster to develop</li><li>I should note... the changes he made to Flux help with more than just this use case, but I think this is a good one for illustrating them.<br /><br /></li><li>debugging techniques in other communities</li><li>hot reloading and time travel debugging</li></ul>But what are they?">
           <Image src={mapImages.fluxMap} height="700px" />
         </Slide>
         <Slide transition={["fade"]} notes="Let's start with hot reloading. Imagine you're developing a todo application. This is your TodoList object. You've added a few todos. Then you change the code for how the todos are added. For example, maybe new todos are added to the back instead of the front. What do you do to see these changes?">
@@ -278,19 +277,19 @@ export default class extends Component {
         <Slide transition={["fade"]} notes="Now we move on to Relay. If you've been following along closely until now, you might have a question.">
           <Image src={mapImages.fluxReduxMap} height="700px" />
         </Slide>
-        <Slide transition={["fade"]} notes="Where's the cloud?">
+        <Slide transition={["fade"]} notes="<ul><li>Where's the cloud?</li><li>Where's interaction with server?</li></ul>">
           <Image src={relayImages.wheres_cloud} height="700px" />
         </Slide>
         <Slide transition={["fade"]} notes="Flux doesn't have one set place to put interaction wtih the server. Even at Facebook, different teams did it in different parts of the app.">
           <Image src={relayImages.cloudFlux} width="1000px" />
         </Slide>
-        <Slide transition={["fade"]} notes="Redux does have a recommended place to put it, but it still requires extra code to make it work seamlessly. To do things like caching and handling network errors.<br /><br />Relay does this stuff, and it does it all for you without you having to write additional code. So let's look at how Relay hooks you up to the cloud, but first we should ask...">
+        <Slide transition={["fade"]} notes="Redux does have a recommended place to put it, but it still requires extra code to wire it up.<br /><br />Relay connects you to the cloud, and it wires it all up for you without you having to write additional code. So let's look at how Relay hooks you up to the cloud, but first we should ask...">
           <Image src={relayImages.cloudRedux} width="1000px" />
         </Slide>
         <Slide transition={["fade"]} notes="What's in the cloud?">
           <Image src={relayImages.whats_in_cloud} height="700px" />
         </Slide>
-        <Slide transition={["fade"]} notes="In the case of an app like Facebook, a huge graph of data.">
+        <Slide transition={["fade"]} notes="In the case of an app like Facebook, a huge graph of data.<br /><br />graph like graph theory">
           <Image src={relayImages.graph_in_cloud} height="700px" />
         </Slide>
         <Slide transition={["fade"]} notes="But when you're showing a page, you only care about a small piece of that graph.">
@@ -302,13 +301,13 @@ export default class extends Component {
         <Slide transition={["fade"]} notes="It knows how to manage this for you because you declare which bits of the graph each component cares about. So it knows exactly which bits of graph to pull down.<br /><br />Let's compare this with the way communication with the cloud usually happens.">
           <Image src={relayImages.local_cache_with_components} height="700px" />
         </Slide>
-        <Slide transition={["fade"]} notes="The way most people design web apps, you'd have an endpoint that knows what data to give you.<br /><br />This results in coupling between the client and the server. You have to update code on both whenever you want to change what the client shows.">
+        <Slide transition={["fade"]} notes="The way most people design web apps, you'd have an endpoint that knows what data to give you.<br /><br />You have a component tree. This one has an avatar and a bio.<br /><br />You'll send up a request...">
           <Image src={relayImages.endpoint1} height="700px" />
         </Slide>
-        <Slide transition={["fade"]} notes="">
+        <Slide transition={["fade"]} notes="and this request is to an endpoint that knows what data you need.">
           <Image src={relayImages.endpoint2} height="700px" />
         </Slide>
-        <Slide transition={["fade"]} notes="">
+        <Slide transition={["fade"]} notes=".....This results in coupling between the client and the server. You have to update code on both whenever you want to change what the client shows.">
           <Image src={relayImages.endpoint3} height="700px" />
         </Slide>
         <Slide transition={["fade"]} notes="Relay fixes this by having the component say exactly what bit of the graph it cares about.">
@@ -326,7 +325,7 @@ export default class extends Component {
         <Slide transition={["fade"]} notes="">
           <Image src={relayImages.fetching5} height="700px" />
         </Slide>
-        <Slide transition={["fade"]} notes="When you have this, it enables really cool things. Having your component say exactly what data it corresponds to in the graph makes it possible to automatically do things like....">
+        <Slide transition={["fade"]} notes="Then it gets added to your local cache. <br /><br />When you have this kind of structure, it enables really cool things. Having your component say exactly what data it corresponds to in the graph makes it possible to automatically do things like....">
           <Image src={relayImages.local_cache_1} width="1000px" />
         </Slide>
         <Slide transition={["fade"]} notes="">
@@ -371,13 +370,13 @@ export default class extends Component {
         <Slide transition={["fade"]} notes="">
           <Image src={relayImages.local_cache_c2} width="1000px" />
         </Slide>
-        <Slide transition={["fade"]} notes="">
+        <Slide transition={["fade"]} notes="I don't have enough time to talk about how Relay does this. ">
           <Image src={relayImages.local_cache_c3} width="1000px" />
         </Slide>
-        <Slide transition={["fade"]} notes="I don't have enough time to talk about how Relay does this. As you see, there are a ton of characters involved here. But I want to point out the thread that ties it to the other two.">
+        <Slide transition={["fade"]} notes="..........As you see, there are a ton of characters involved here. But I want to point out the thread that ties it to the other two.">
           <Image src={relayImages.relayFlow} style={{maxHeight: "700px"}} />
         </Slide>
-        <Slide transition={["fade"]} notes="First, all state updates are handled by creating an object declares what should happen. This time, that object is called a mutation.">
+        <Slide transition={["fade"]} notes="<ul><li>state is changed using objects that represent the change</li><li>in Flux and Redux, this is an action</li></ul>">
           <Image src={relayImages.relayFlow1} style={{maxHeight: "700px"}} />
         </Slide>
         <Slide transition={["fade"]} bgColor="primary" notes="So that's Relay">

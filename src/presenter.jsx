@@ -155,7 +155,9 @@ class Presenter extends Base {
         textAlign: "left",
         padding: "20px 50px",
         columnCount: "2",
-        fontSize: "0.8em"
+        fontSize: "0.7em",
+        lineHieght: "1.6em",
+        fontFamily: "Verdana"
       }
     };
     return (

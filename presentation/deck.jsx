@@ -102,6 +102,10 @@ let relayImages = {};
   "local_cache_c1",
   "local_cache_c2",
   "local_cache_c3",
+  "local_cache_d1_2",
+  "local_cache_d2",
+  "local_cache_d3",
+  "local_cache_d4",
   "relayFlow",
   "relayFlow1"
 ].forEach((name) => relayImages[name] = prepImage(name))
@@ -126,7 +130,7 @@ export default class extends Component {
         <Slide transition={["fade"]} bgColor="primary">
           <Image src={mapImages.map} style={{maxHeight: "700px"}} />
         </Slide>
-        <Slide transition={["fade"]} notes="Hi, I'm Lin Clark<p>Walk you through the wilds</p>" bgImage={mapImages.me}>
+        <Slide transition={["fade"]} notes="Hi, I'm Lin Clark<p>Walk you through the wilds</p><p>By data handling, I mean when you have data coming in from the user and you need it to update multiple things on the page.</p>" bgImage={mapImages.me}>
           <Heading size="2" padding="0 320px 0 0">
             Hi, I'm <Link href="https://twitter.com/linclark">@linclark</Link> and I make <Link href="https://twitter.com/codecartoons">@codecartoons</Link>.
           </Heading>
@@ -164,7 +168,7 @@ export default class extends Component {
         <Slide transition={["fade"]} notes="<ul><li>back to this diagram</li><li>Flux docs</li><br /><br /><li>unidirectional data flow</li><li>if you don't already understand what the parts do, I don't think this diagram helps you really get it</li><li>It definitely didn't help me.</li><br /><br />What did help me understand Flux was thinking about it as a group of characters, working together as a team to complete some task. So I'm going to introduce you to the cast of characters in my head.">
           <Image src={fluxImages.diagram} />
         </Slide>
-        <Slide notes="<ul><li>telegraph operator >>></li><li>other characters come</li> >>></li><br/><br/><li>takes info + formats it so rest of the system can understand</li><li>Each change that the view wants to make... the action creator turns into an object that represents that change.</li><li>object has a type (MESSAGE_CREATE)</li><li>payload</li><li>You define list</li><li>neat thing</li> >>> <br /><br />......Once it has formatted this, the action creator sends the action off to the dispatcher.">
+        <Slide notes="<ul><li>telegraph operator >>></li><li>other characters come >>>></li><br/><li>takes info + formats it so rest of the system can understand</li><li>Each change that the view wants to make... the action creator turns into an object that represents that change.</li><li>object has a type (MESSAGE_CREATE)</li><li>payload</li><li>You define list</li><li>neat thing</li> >>> <br /><br />......Once it has formatted this, the action creator sends the action off to the dispatcher.">
           <CharacterCard image={fluxImages.action} title="The Action Creator">
             <ListItem>telegraph operator</ListItem>
             <ListItem>formats actions</ListItem>
@@ -188,7 +192,6 @@ export default class extends Component {
         <Slide notes="><br /><br />The view is basically a presenter that just takes the data that it's given and turns it into something the user can understand. ><br /><br />It renders the data that it gets from the store > <br /><br />The controller view is a little bit more aware. It basically acts as a middle manager between the store and the presenter. It fetches data from the store and gives it to the view to render.<br /><br />So now lets take a look at how these all work together.">
           <CharacterCard image={fluxImages.view} title="The View and Controller View">
             <ListItem>view is a presenter</ListItem>
-            <ListItem>renders data from the store</ListItem>
             <ListItem>controller view is a middle manager</ListItem>
           </CharacterCard>
         </Slide>
@@ -220,10 +223,10 @@ export default class extends Component {
           <Image src={fluxImages.flux_flow_6} height="700px" />
         </Slide>
 
-        <Slide transition={["fade"]} notes="So that's Flux and it ended the cycle of brokenness and all rejoiced... and created 100 different implementations of it.">
+        <Slide transition={["fade"]} notes="">
           <Image src={mapImages.mapNoRegions} height="700px" />
         </Slide>
-        <Slide transition={["fade"]} notes="........Now, on to Redux<ul><li>a lot like Flux</li><li>just a couple of changes<br /><br /></li></li>but if Flux solved the problem, why change it?</li><li>make it faster to develop</li><li>I should note... the changes he made to Flux help with more than just this use case, but I think this is a good one for illustrating them.<br /><br /></li><li>debugging techniques in other communities</li><li>hot reloading and time travel debugging</li></ul>But what are they?">
+        <Slide transition={["fade"]} notes="So that's Flux and it ended the cycle of brokenness and all rejoiced... and created 100 different implementations of it.</br>........Now, on to Redux<ul><li>a lot like Flux... an evolution of Flux</li><li>just a couple of changes<br /><br /></li></li>but if Flux solved the problem, why change it?</li><li>make it faster to develop</li><li>I should note... the changes he made to Flux help with more than just this use case, but I think this is a good one for illustrating them.<br /><br /></li><li>debugging techniques in other communities</li><li>hot reloading and time travel debugging</li></ul>But what are they?">
           <Image src={mapImages.fluxMap} height="700px" />
         </Slide>
         <Slide transition={["fade"]} notes="Let's start with hot reloading. Imagine you're developing a todo application. This is your TodoList object. You've added a few todos. Then you change the code for how the todos are added. For example, maybe new todos are added to the back instead of the front. What do you do to see these changes?">
@@ -252,22 +255,22 @@ export default class extends Component {
         </Slide>
         <Slide transition={["fade"]} notes="This results in the UI being in a different state.">
           <Image src={reduxImages.timetravel3} height="700px" />
-        </Slide> 
+        </Slide>
         <Slide transition={["fade"]} notes="You do this a couple more times. For example, you cross out the todo and...">
           <Image src={reduxImages.timetravel4} height="700px" />
-        </Slide> 
+        </Slide>
         <Slide transition={["fade"]} notes="add a new one. What if the bug happens there... when the first todo is crossed out and then another one is added. What time travel debugging let's you do is step backwards...">
           <Image src={reduxImages.timetravel5} height="700px" />
-        </Slide> 
+        </Slide>
         <Slide transition={["fade"]} notes="through this state. So you can make your change and step back a step to try it again.<br /><br />So what do you need to do to make this work? You can actually kind of see it already in the way I've drawn this. You treat it like an equasion. You take the old state and add the action and get the *new* state. I stress 'new' here because that's the key. You don't make changes to the old state. You output a new object. This is what people talk about with immutability or pure functions.<br /><br />Redux makes it possible for you to do both of these.">
           <Image src={reduxImages.timetravel6} height="700px" />
-        </Slide> 
+        </Slide>
         <Slide transition={["fade"]} notes="I'm not going to dive too deep into a detailed walk through of Redux. It mostly looks like Flux. I've written this all up, you can read the post on code-cartoons.com. I do want to point out two of the key differences.......... The first is that the way the store works. Instead of managing the logic, the store just holds on to the state. It holds all of the state in a single tree, and when an action comes in...">
           <Image src={reduxImages.reduxFlow} width="1200px" />
-        </Slide> 
+        </Slide>
         <Slide transition={["fade"]} notes="it passes that state and the action off to something called a reducer. The reducer figures out how the state needs to change in response to the action. You'll remember, this is what we needed to do to support hot reloading.<br /><br />It does another thing. Instead of making changes to the state itself, instead the reducer makes a copy of the state. This makes the time travel debugging easy... you just create an array of each of the state objects.">
           <Image src={reduxImages.reducers} width="1200px" />
-        </Slide> 
+        </Slide>
         <Slide transition={["fade"]} notes="There's another difference between Flux and Redux. That's the way that state is sent from the store to the view layer. ">
           <Image src={reduxImages.viewlayerbinding} width="1200px" />
         </Slide>
@@ -301,7 +304,7 @@ export default class extends Component {
         <Slide transition={["fade"]} notes="It knows how to manage this for you because you declare which bits of the graph each component cares about. So it knows exactly which bits of graph to pull down.<br /><br />Let's compare this with the way communication with the cloud usually happens.">
           <Image src={relayImages.local_cache_with_components} height="700px" />
         </Slide>
-        <Slide transition={["fade"]} notes="The way most people design web apps, you'd have an endpoint that knows what data to give you.<br /><br />You have a component tree. This one has an avatar and a bio.<br /><br />You'll send up a request...">
+        <Slide transition={["fade"]} notes="The way most people design web apps, you'd have an endpoint that knows what data to give you.<br /><br />The app sends up a request...">
           <Image src={relayImages.endpoint1} height="700px" />
         </Slide>
         <Slide transition={["fade"]} notes="and this request is to an endpoint that knows what data you need.">
@@ -362,16 +365,16 @@ export default class extends Component {
           <Image src={relayImages.local_cache_b3} width="1000px" />
         </Slide>
         <Slide transition={["fade"]} notes="And it makes it really easy to sync any changes back up to the server. It will even handle optimistic updates, where you update the UI assuming that the request is successful, and then handles it later if the update to the server fails.">
-          <Image src={relayImages.local_cache_c0} width="1000px" />
+          <Image src={relayImages.local_cache_d1_2} width="1000px" />
         </Slide>
         <Slide transition={["fade"]} notes="">
-          <Image src={relayImages.local_cache_c1} width="1000px" />
+          <Image src={relayImages.local_cache_d2} width="1000px" />
         </Slide>
         <Slide transition={["fade"]} notes="">
-          <Image src={relayImages.local_cache_c2} width="1000px" />
+          <Image src={relayImages.local_cache_d3} width="1000px" />
         </Slide>
         <Slide transition={["fade"]} notes="I don't have enough time to talk about how Relay does this. ">
-          <Image src={relayImages.local_cache_c3} width="1000px" />
+          <Image src={relayImages.local_cache_d4} width="1000px" />
         </Slide>
         <Slide transition={["fade"]} notes="..........As you see, there are a ton of characters involved here. But I want to point out the thread that ties it to the other two.">
           <Image src={relayImages.relayFlow} style={{maxHeight: "700px"}} />
